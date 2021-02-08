@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>LDSBC_IT243_km</Name>
-    <LastWriteTime>2021-02-07T05:03:42.1452546Z</LastWriteTime>
+    <LastWriteTime>2021-02-08T02:07:27.9837055Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>SSIS_PDS_Template_km.dtsx</Name>
-      <LastWriteTime>2021-02-08T00:19:17.4543879Z</LastWriteTime>
+      <LastWriteTime>2021-02-08T02:07:27.9547819Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
