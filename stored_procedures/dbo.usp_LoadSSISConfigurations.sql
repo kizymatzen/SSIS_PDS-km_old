@@ -25,6 +25,7 @@ Ver      Date        Author           Description
 -------  ----------  ---------------  ------------------------------------------------------------------------
 1.0      02/07/2021  KMATZEN          1. Created this process for LDS BC IT243
 1.1      02/07/2021  KMATZEN          1. Added DFNB3 connection configuration 
+1.2      02/08/2021  KMATZEN          1. Added LoadDFNB3_km connection configuration
 
 
 

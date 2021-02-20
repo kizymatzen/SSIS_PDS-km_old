@@ -5,7 +5,7 @@ PURPOSE: Ad Hoc quieries used to review the Package Management logs
 MODIFICATION LOG:
 Ver      Date        Author           Description
 -------  ----------  ---------------  ------------------------------------------------------------------------
-1.0      11/03/2019  JJAUSSI          1. Created this script for LDS BC IT243
+1.0      02/20/2019  KMATZEN          1. Created this script for LDS BC IT243
 
 
 NOTES:  
@@ -31,8 +31,8 @@ SELECT p.PackageID
        INNER JOIN
        dbo.PackageTaskLog AS ptl ON ptl.PackageLogID = pl.PackageLogID
  WHERE 1 = 1
-       AND BatchLogID = 7
-	   --AND PackageName = 'SSIS_PDS_Template_jj'
+       AND BatchLogID = 15
+	   --AND PackageName = 'SSIS_PDS_Template_km'
  --ORDER BY CONVERT(TIME, ptl.EndDateTime - ptl.StartDateTime) DESC;
  ORDER BY ptl.EndDateTime;
 
