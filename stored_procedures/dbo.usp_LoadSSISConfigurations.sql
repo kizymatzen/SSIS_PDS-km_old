@@ -26,7 +26,8 @@ Ver      Date        Author           Description
 1.0      02/07/2021  KMATZEN          1. Created this process for LDS BC IT243
 1.1      02/07/2021  KMATZEN          1. Added DFNB3 connection configuration 
 1.2      02/08/2021  KMATZEN          1. Added LoadDFNB3_km connection configuration
-1.3      08/03/2021  KMATZEN          1. Added LoadEXM_km connection configuration
+1.3      02/26/2021  KMATZEN          1. Added LoadEXM_km connection configuration
+1.4      03/05/2021  KMATZEN          1. Added LoadNAICSCodeHierDim_km connection configuration
 
 
 
@@ -184,6 +185,26 @@ SELECT c.*
           (
            'LoadEXM_km'
 		 , 'C:\Users\kizy\Desktop\School\IT 243\Repositories\EXM_km\txt_files'
+         , '\Package.Variables[User::v_data_share_root].Properties[Value]'
+         , 'String'
+          );
+
+-- 3.4) LoadNAICSCodeHierDim_km
+
+    DELETE FROM dbo.[SSIS Configurations]
+     WHERE ConfigurationFilter = 'LoadNAICSCodeHierDim_km';
+	
+
+	-- 3.4.1) v_data_share_root
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'LoadNAICSCodeHierDim_km'
+		 , 'C:\Users\kizy\Desktop\School\IT 243\Repositories\DFNB_dw-km\xls_files'
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );
