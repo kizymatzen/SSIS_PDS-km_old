@@ -12,11 +12,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDFNB3_xx"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{DBBC248E-A750-444A-AEFC-2BAFD468CC00}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{0C7EB983-BADF-43E3-979D-0EBB2DE98AE4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).DFNB3]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{50FBEAFD-3EDF-49D3-816D-7E996DA68183}"
+      DTS:ObjectName="(local).DFNB3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=DFNB3;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[(local).EXM1]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
@@ -5265,6 +5275,85 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Parent container\Data Profiling Task"
+          DTS:CreationName="Microsoft.DataProfilingTask"
+          DTS:Description="Data Profiling Task"
+          DTS:DTSID="{FCF2CBC3-4930-40D5-A1D8-9071E65136CE}"
+          DTS:ExecutableType="Microsoft.DataProfilingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Profiling Task"
+          DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <DataProfilingTaskData
+              Destination="LoadNAICSCodeHierDim_km.dtsx"
+              OverwriteDestination="True">
+              <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
+  <ProfileVersion>1.0</ProfileVersion>
+  <DataSources />
+  <DataProfileInput>
+    <ProfileMode>Exact</ProfileMode>
+    <Timeout>0</Timeout>
+    <Requests>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <Column IsWildCard="true" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <Column IsWildCard="true" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <Column IsWildCard="true" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <Column IsWildCard="true" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <FunctionalDependencyProfileRequest ID="FDReq">
+        <DataSourceID>{50FBEAFD-3EDF-49D3-816D-7E996DA68183}</DataSourceID>
+        <Table Schema="dbo" Table="stg_p1" />
+        <DeterminantColumns>
+          <Column IsWildCard="true" />
+        </DeterminantColumns>
+        <DependentColumn IsWildCard="true" />
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <FDStrengthThreshold>0.95</FDStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </FunctionalDependencyProfileRequest>
+    </Requests>
+  </DataProfileInput>
+  <DataProfileOutput>
+    <Profiles />
+  </DataProfileOutput>
+</DataProfile>]]></ProfileInput>
+            </DataProfilingTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Parent container\Load Nums"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -5274,7 +5363,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Nums"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5286,6 +5375,7 @@
           DTS:refId="Package\Parent container\LoadNAICSCodeHierDim_km"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
+          DTS:Disabled="True"
           DTS:DTSID="{E25B000F-1931-4412-9FA9-9F9D35D0ADB1}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
@@ -5552,7 +5642,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate Nums"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -5836,7 +5926,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate Nums"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -7642,7 +7732,7 @@
                   DTS:ExecutableType="Microsoft.ScriptTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="MsgBox check variable"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <ScriptProject
@@ -24613,7 +24703,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate data"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -24675,6 +24765,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Parent container\LoadNAICSCodeHierDim_km" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Parent container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{1A611423-C585-4800-BF41-D947FB9E73B0}"
+          DTS:From="Package\Parent container\Reload raw data - Flat File"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Parent container\Data Profiling Task" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -25790,11 +25888,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="728.666666666667,430"
           Size="174,42.6666666666667"
           Id="Package\Documentation"
-          TopLeft="31.5000000000001,622.833333333333" />
+          TopLeft="145.166666666667,622.833333333333" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Parent container\Data Profiling Task"
+          TopLeft="756.166666666667,211.166666666667" />
         <NodeLayout
           Size="134,42.6666666666667"
           Id="Package\Parent container\Load Nums"
-          TopLeft="260.833333333333,5.49999999999993" />
+          TopLeft="260.833333333333,5.50000000000004" />
         <NodeLayout
           Size="220,42.6666666666667"
           Id="Package\Parent container\LoadNAICSCodeHierDim_km"
@@ -25872,7 +25974,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="174.666666666667,206"
           Size="174.666666666667,248.666666666667"
           Id="Package\Parent container\Reload Nums - OLE_DB"
-          TopLeft="5.5000000000001,108.166666666667" />
+          TopLeft="5.50000000000004,108.166666666667" />
         <NodeLayout
           Size="153.333333333334,42.6666666666667"
           Id="Package\Parent container\Reload raw data - Flat File\Foreach Loop Container\Data Flow Task"
@@ -26001,13 +26103,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           TopLeft="472.833333333333,5.49999999999993" />
         <EdgeLayout
           Id="Package\Parent container.PrecedenceConstraints[Constraint]"
-          TopLeft="306.833333333333,48.1666666666666">
+          TopLeft="306.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-214,60.0000000000002"
+              EndConnector="-214,60.0000000000001"
               Start="0,0"
-              End="-214,52.5000000000002">
+              End="-214,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -26024,7 +26126,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
                     Point2="-214,24.424778761062"
                     Point3="-214,28.424778761062" />
                   <mssgle:LineSegment
-                    End="-214,52.5000000000002" />
+                    End="-214,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -26037,13 +26139,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Parent container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="348.833333333333,48.1666666666666">
+          TopLeft="348.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-20.9999999999999,60.0000000000001"
+              EndConnector="-21,60.0000000000001"
               Start="0,0"
-              End="-20.9999999999999,52.5000000000001">
+              End="-21,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -26054,13 +26156,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
                     Point2="0,24.424778761062"
                     Point3="-4,24.424778761062" />
                   <mssgle:LineSegment
-                    End="-16.9999999999999,24.424778761062" />
+                    End="-17,24.424778761062" />
                   <mssgle:CubicBezierSegment
-                    Point1="-16.9999999999999,24.424778761062"
-                    Point2="-20.9999999999999,24.424778761062"
-                    Point3="-20.9999999999999,28.424778761062" />
+                    Point1="-17,24.424778761062"
+                    Point2="-21,24.424778761062"
+                    Point3="-21,28.424778761062" />
                   <mssgle:LineSegment
-                    End="-20.9999999999999,52.5000000000001" />
+                    End="-21,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -26073,18 +26175,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Parent container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="585.833333333333,48.1666666666666">
+          TopLeft="549.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,163"
+              EndConnector="36.3333333333334,163"
               Start="0,0"
-              End="0,155.5">
+              End="36.3333333333334,155.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,155.5" />
+                    End="0,61.8875219683656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.8875219683656"
+                    Point2="0,65.8875219683656"
+                    Point3="4,65.8875219683656" />
+                  <mssgle:LineSegment
+                    End="32.3333333333334,65.8875219683656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.3333333333334,65.8875219683656"
+                    Point2="36.3333333333334,65.8875219683656"
+                    Point3="36.3333333333334,69.8875219683656" />
+                  <mssgle:LineSegment
+                    End="36.3333333333334,155.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Parent container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="622.166666666667,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="218.666666666667,163"
+              Start="0,0"
+              End="218.666666666667,155.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.8875219683656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.8875219683656"
+                    Point2="0,65.8875219683656"
+                    Point3="4,65.8875219683656" />
+                  <mssgle:LineSegment
+                    End="214.666666666667,65.8875219683656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="214.666666666667,65.8875219683656"
+                    Point2="218.666666666667,65.8875219683656"
+                    Point3="218.666666666667,69.8875219683656" />
+                  <mssgle:LineSegment
+                    End="218.666666666667,155.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -26096,21 +26244,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="704,412"
-          Size="704,454.666666666667"
+          PanelSize="931.333333333334,412"
+          Size="931.333333333334,454.666666666667"
           Id="Package\Parent container"
           TopLeft="5.50000000000006,108.166666666667" />
         <NodeLayout
           Size="182.666666666667,42.6666666666667"
           Id="Package\SQL LogPackageEnd"
-          TopLeft="266.166666666667,622.833333333333" />
+          TopLeft="379.833333333333,622.833333333333" />
         <NodeLayout
           Size="185.333333333334,42.6666666666667"
           Id="Package\SQL LogPackageStart"
-          TopLeft="264.833333333333,5.49999999999993" />
+          TopLeft="378.5,5.49999999999993" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="357.5,48.1666666666666">
+          TopLeft="471.166666666667,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
@@ -26132,7 +26280,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="357.5,562.833333333333">
+          TopLeft="471.166666666667,562.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
