@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDFNB3_xx"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{3394D80E-8A75-483C-9077-69E53C86A702}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{B413C408-A0B4-4162-B32A-67D8D4D7F893}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24947,18 +24947,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnPostExecute]\Execute SQL Task"
+          DTS:refId="Package.EventHandlers[OnPostExecute]\SQL LogTaskPostExecute"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{A0BB1D21-C5B5-4CBE-82C0-2D28332B7BD7}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Execute SQL Task"
+          DTS:ObjectName="SQL LogTaskPostExecute"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
-              DTS:refId="Package.EventHandlers[OnPostExecute]\Execute SQL Task.EventHandlers[OnPostExecute]"
+              DTS:refId="Package.EventHandlers[OnPostExecute]\SQL LogTaskPostExecute.EventHandlers[OnPostExecute]"
               DTS:CreationName="OnPostExecute"
               DTS:DTSID="{EFD6EAB6-8978-4EEA-88E5-E519854C028F}"
               DTS:EventID="1342177280"
@@ -24982,7 +24982,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{FE82081D-89F2-4D5C-B3B6-0E179474855D}"
-              SQLTask:SqlStatementSource="exec dbo.LogPackageError&#xA;@PackageLogID = ?&#xA;,@BatchLogID = ?&#xA;,@SourceName = ?&#xA;,@SourceID = ?&#xA;,@ErrorCode = ?&#xA;,@ErrorDescription = ?&#xA;,@EndBatchAudit = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec dbo.LogTaskPostExecute&#xA;@PackageLogID = ?&#xA;,@SourceID = ?&#xA;,@PackageID = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::PackageLogID"
@@ -26173,8 +26173,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="168,42.6666666666667"
-          Id="Package.EventHandlers[OnPostExecute]\Execute SQL Task"
+          Size="204,42.6666666666667"
+          Id="Package.EventHandlers[OnPostExecute]\SQL LogTaskPostExecute"
           TopLeft="5.5,5.50000000000004" />
       </GraphLayout>
     </LayoutInfo>
